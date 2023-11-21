@@ -3,41 +3,72 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <title>Image Uploader</title>
   <script src="https://use.fontawesome.com/04a6ed3885.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2200ff;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-style: inherit;
+    }
+
+    .login-btn {
+      background-color: #28a745;
+      border-color: #28a745;
+      color: #ffffff;
+    }
+
+    .custom-file-label {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    #imageGallery .card {
+      margin-bottom: 15px;
+    }
+
+    #imageGallery img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-<header class="container group">
-  <nav class="main-nav">
-    <div class="login-btn">
-      <button type="button" class="login-button btn btn-default pull-right">
-        Login
-      </button>
-    </div>
-    <div class="logout-btn">
-      <button type="button" class="logout-button btn btn-default pull-right">
-        Logout
-      </button>
-    </div>
-  </nav>
-</header>
+  <div class="container mt-5">
+    <h1 class="mb-4">Image Gallery</h1>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-<main class="container">
-  <section>
-    <ul class="images-container"></ul>
-  </section>
-  <section>
-    <form>
-      <fieldset>
-        <legend>Click to upload your image</legend>
-        <input class="image-capture" type="file" accept="image/*,capture=camera">
-        <button class="btn btn-default btn-upload-image pull-right" type="button">Submit</button>
-      </fieldset>
-    </form>  
-  </section>
-</main>
+    <!-- Login/Signup with Gmail (simplified) -->
+    <button class="btn btn-primary login-btn" onclick="loginWithGoogle()">Login with Google</button>
 
-<footer></footer>
+    <!-- Image Upload Form -->
+    <form id="uploadForm" class="mt-4">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="imageInput" name="image" required>
+        <label class="custom-file-label" for="imageInput">Choose image</label>
+      </div>
+      <button type="submit" class="btn btn-success mt-2">Upload Image</button>
+    </form>
+    <!-- Image Gallery -->
+    <div id="imageGallery" class="mt-4 row">
+      <!-- Individual image cards will be dynamically added here -->
+    </div>
+  </div>
+
 
 <script src="/public/bundle.js"></script>
 </body>
